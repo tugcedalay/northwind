@@ -13,6 +13,8 @@ import com.tobeto.business.abstracts.ProductService;
 import com.tobeto.core.utilities.results.DataResult;
 import com.tobeto.core.utilities.results.Result;
 import com.tobeto.entities.concretes.Product;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/api/products")
@@ -37,6 +39,16 @@ public class ProductsController {
 	public Result add(@RequestBody Product product){
 		return this.productService.add(product);
 	}
+	@GetMapping("/getByProductName")
+	//yapılan isteği parametrelere bak productnamei oku atamasını yap pne gönder
+	public DataResult<Product> getByProductName(@RequestParam  String productName) {
+		return this.getByProductName(productName);
+	}
+	
+	
+	
+	
+	
 }
 
 

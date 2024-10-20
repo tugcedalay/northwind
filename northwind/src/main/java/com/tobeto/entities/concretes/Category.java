@@ -2,6 +2,8 @@ package com.tobeto.entities.concretes;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -17,8 +19,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "categories")
 @Entity
-public class category {
-	
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "products"})
+public class Category {
+	//jsonIgnore sonsuz donguye girmesin diye
   @Id
   @Column(name = "category_id")	
   private int categoryId;
@@ -26,6 +29,6 @@ public class category {
   @Column(name = "category_name")
   private String categoryName;
   
-  @OneToMany(mappedBy = "categories")
+  @OneToMany(mappedBy = "category")
   private List<Product> products;
 }

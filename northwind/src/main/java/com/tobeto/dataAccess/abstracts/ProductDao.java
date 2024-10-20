@@ -14,26 +14,26 @@ import com.tobeto.entities.concretes.Product;
 //product icin calısıcam pk alanımın veri türü integer
 //getBy ilgili kolona gider ve ver kosulu yazar
 public interface ProductDao extends JpaRepository<Product, Integer>{
-      Product getByProdductName(String productName);
+      Product getByProductName(String productName);
       
-      Product getByProductNameAndCategoryId(String productName, int categoryId);
+      Product getByProductNameAndCategory(String productName, int categoryId);
       
       
       //iki kolonu da getirebilecegi icin or kullanırken list kullandim
       
-      List<Product> getByProductNameOrCategoryId(String productName, int categoryId);
+      List<Product> getByProductNameOrCategory(String productName, int categoryId);
       
       //select* from products where product_name = abc or category_id = 1
       //select* from products where category_id in(1, 2, 3, 4) 
       
-      List<Product> getByCategoryIdIn(List<Integer> categories);
+      List<Product> getByCategoryIn(List<Integer> categories);
       
       List<Product> getByProductNameContains(String productName);
       
       List<Product> getByProductNameStartsWith(String productName);
       
       //queryde entityden yazdık, parametre iki noktalı
-      @Query("From Product where productName =:productName and categoryId=:categoryId")
+      @Query("From Product where productName =:productName and category.categoryId=:categoryId")
       List<Product> getByNameAndCategory(String productName, int categoryId);
       
       //select * from products where product_name = abc and categoryId=abc
