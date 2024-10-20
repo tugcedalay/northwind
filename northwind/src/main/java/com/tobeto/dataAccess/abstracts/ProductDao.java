@@ -16,12 +16,12 @@ import com.tobeto.entities.concretes.Product;
 public interface ProductDao extends JpaRepository<Product, Integer>{
       Product getByProductName(String productName);
       
-      Product getByProductNameAndCategory(String productName, int categoryId);
+      Product getByProductNameAndCategory_CategoryId(String productName, int categoryId);
       
       
       //iki kolonu da getirebilecegi icin or kullanırken list kullandim
       
-      List<Product> getByProductNameOrCategory(String productName, int categoryId);
+      List<Product> getByProductNameOrCategory_CategoryId(String productName, int categoryId);
       
       //select* from products where product_name = abc or category_id = 1
       //select* from products where category_id in(1, 2, 3, 4) 
