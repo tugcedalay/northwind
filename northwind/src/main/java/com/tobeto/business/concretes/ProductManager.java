@@ -16,6 +16,7 @@ import com.tobeto.core.utilities.results.SuccessDataResult;
 import com.tobeto.core.utilities.results.SuccessResult;
 import com.tobeto.dataAccess.abstracts.ProductDao;
 import com.tobeto.entities.concretes.Product;
+import com.tobeto.entities.dtos.ProductWithCategoryDto;
 
 
 @Service
@@ -115,5 +116,12 @@ public class ProductManager implements ProductService{
 		Sort sort = Sort.by(Sort.Direction.DESC, "productName");
 		return new SuccessDataResult<List<Product>>
 		(this.productDao.findAll(sort), "Basarili") ;
+	}
+
+
+	@Override
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+		return new SuccessDataResult<List<ProductWithCategoryDto>>
+		(this.productDao.getProductWithCategoryDetails(), "Data listelendi");
 	}
 }

@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.tobeto.core.utilities.results.DataResult;
 import com.tobeto.core.utilities.results.Result;
 import com.tobeto.entities.concretes.Product;
+import com.tobeto.entities.dtos.ProductWithCategoryDto;
 
 //crud operasyonları yapmamızı sağlar 
 //generic yapıda jpa repository her nesne için çalışır
@@ -37,4 +38,14 @@ public interface ProductDao extends JpaRepository<Product, Integer>{
       List<Product> getByNameAndCategory(String productName, int categoryId);
       
       //select * from products where product_name = abc and categoryId=abc
+      
+      //----------------------------------------------------------------------------
+      
+      @Query("Select new com.tobeto.entities.dtos.ProductWithCategoryDto"
+      		+ "(p.id, p.productName, c.categoryName) " +
+    	       "FROM Category c INNER JOIN c.products p")
+      List<ProductWithCategoryDto> getProductWithCategoryDetails();
+      
+      //select p.prpoductId, p.productName, c.categoryName from Category c inner join Product p 
+      //on c.categoryId = p.categoryId--jpquelde yazmaya gerek yok
 }

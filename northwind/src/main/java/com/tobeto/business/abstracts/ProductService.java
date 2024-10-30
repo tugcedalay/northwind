@@ -2,10 +2,14 @@ package com.tobeto.business.abstracts;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.tobeto.core.utilities.results.DataResult;
 import com.tobeto.core.utilities.results.Result;
 import com.tobeto.entities.concretes.Product;
+import com.tobeto.entities.dtos.ProductWithCategoryDto;
 
+@Service
 public interface ProductService {
     DataResult<List<Product>> getAll();
     DataResult<List<Product>> getAllSorted();
@@ -32,6 +36,6 @@ public interface ProductService {
     
 	 DataResult<List<Product>> getByNameAndCategory(String productName, int categoryId);
 	 
-	 
+	 DataResult<List<ProductWithCategoryDto>>  getProductWithCategoryDetails();
 	 
 }

@@ -13,6 +13,8 @@ import com.tobeto.business.abstracts.ProductService;
 import com.tobeto.core.utilities.results.DataResult;
 import com.tobeto.core.utilities.results.Result;
 import com.tobeto.entities.concretes.Product;
+import com.tobeto.entities.dtos.ProductWithCategoryDto;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -80,6 +82,13 @@ public class ProductsController {
 	DataResult<List<Product>> getByNameAndCategory(@RequestParam("productName") String productName,@RequestParam("categoryId") int categoryId){
 		return this.productService.getByNameAndCategory(productName, categoryId);
 	}
+	
+	@GetMapping("/getProductWithCategoryDetails")
+    public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails(){
+    	return this.productService.getProductWithCategoryDetails();
+    }
+	
+	
 	
 }
 
