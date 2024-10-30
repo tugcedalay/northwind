@@ -1,6 +1,7 @@
 package com.tobeto.business.concretes;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tobeto.business.abstracts.UserService;
 import com.tobeto.core.dataAccess.UserDao;
@@ -10,7 +11,7 @@ import com.tobeto.core.utilities.results.Result;
 import com.tobeto.core.utilities.results.SuccessDataResult;
 import com.tobeto.core.utilities.results.SuccessResult;
 
-
+@Service
 public class UserManager implements UserService {
     
 	private UserDao userDao;
